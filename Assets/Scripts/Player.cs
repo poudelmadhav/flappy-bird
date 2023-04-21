@@ -22,9 +22,16 @@ public class Player : MonoBehaviour
         InvokeRepeating(nameof(AmimateSprite), 0.15f, 0.15f);
     }
 
+    private void OnEnable() {
+        Vector3 position = transform.position;
+        position.y = 0f;
+        transform.position = position;
+        direction = Vector3.zero;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Vector3.up * strength;
         }
